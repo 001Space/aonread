@@ -1,0 +1,16 @@
+
+:root {
+  --color-bg: #faf7f2;
+  --color-text: #2b2623;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+main {
+  padding: 2rem;
+}
