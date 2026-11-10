@@ -26,14 +26,14 @@ function createWindow(): void {
     mainWindow.show()
   })
 
-  mainWindow.webContents.setWindowOpenHandler(({url}) => {
+  mainWindow.webContents.setWindowOpenHandler(({ url }) => {
     if (url.startsWith('https:')) shell.openExternal(url)
     return { action: 'deny' }
   })
 
   mainWindow.webContents.on('will-navigate', (event, url) => {
-  if (url !== mainWindow.webContents.getURL()) event.preventDefault()
-})
+    if (url !== mainWindow.webContents.getURL()) event.preventDefault()
+  })
 
   if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
     mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'])
@@ -46,7 +46,6 @@ app.whenReady().then(() => {
   // Set app user model id for windows
   electronApp.setAppUserModelId('com.aonread.app')
 
-
   app.on('browser-window-created', (_, window) => {
     optimizer.watchWindowShortcuts(window)
   })
@@ -55,15 +54,12 @@ app.whenReady().then(() => {
   createWindow()
 
   app.on('activate', () => {
-
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
 })
-
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
   }
 })
-

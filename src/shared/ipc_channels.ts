@@ -1,3 +1,3 @@
 export const IPC_CHANNELS = {
-    appInfo: 'app: get-Info'
+  AppInfo: 'app: get-Info'
 } as const
